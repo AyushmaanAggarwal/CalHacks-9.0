@@ -8,12 +8,11 @@ from werkzeug.urls import url_parse
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    signin_form = SignInForm()
 
-    if signin_form.validate_on_submit():
-        username = signin_form.username.data
+    if request.method == "POST":
+        username = request.form['username']
         user_object = User.get(username)
-        if user_object and user_object.check_password(signin_form.password.data):
+        if user_object and user_object.check_password(request.form['password']):
             login_user(user_object)
             flash("Successfully logged in")
             return redirect(f'/{username}/news/{1}')
@@ -23,18 +22,17 @@ def home():
         else:
             flash('Incorrect password')
 
-    return render_template('login.html', sform=signin_form)
+    return render_template('login.html')
 
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signuppage():
-    signup_form = SignUpForm()
 
-    if signup_form.validate_on_submit():
-        username = signup_form.username.data
+    if request.method == "POST":
+        username = request.form['username']
         if User.get(username) is None:
             user_object = User(username=username, password_hash=None)
-            user_object.set_password(signup_form.password.data)
+            user_object.set_password(request.form['password'])
             db.session.add(user_object)
             db.session.commit()
             flash("Successfully signed up")
@@ -42,7 +40,7 @@ def signuppage():
         else:
             flash("That username already exists. Please choose another.")
 
-    return render_template('register.html', sform=signup_form)
+    return render_template('register.html')
 
 
 @app.route('/<username>/news/<i>', methods=['GET', 'POST'])

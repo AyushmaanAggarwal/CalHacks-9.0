@@ -1,36 +1,19 @@
-<!-- Credits to https://github.com/KasiitaTimothy/login-and-register-forms  -->
+{% extends "signform.html" %}
 
-<html lang="en">
-<head>
-  <title>Register</title>
-</head>
-<body>
-  <center>
-  <h3>Register Here</h3>
-  <form action="/signup" method="post">
-      <table WIDTH=400>
-        {{ sform.hidden_tag() }}
-        <tr>
-          <td>{{ sform.username.label }}</td>
-          <td>{{ sform.username() }}</td>
-        </tr>
-        <tr>
-          <td>{{ sform.password.label }}</td>
-          <td>{{ sform.password() }}</td>
-        </tr>
-        <tr>
-           <td>{{ sform.submit() }}</td>
-           <td><p>Already a user? <a href="/">Login Here</a></p></td>
-        </tr>
-      </table>
-  </form>
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    {% for message in messages %}
-    <p>{{ message }}</p>
-    {% endfor %}
-    {% endif %}
-    {% endwith %}
-  </center>
-</body>
-</html>
+{% block title %}
+<h1> Register </h1>
+{% endblock %}
+
+{% block formoption %}
+<form action="/signup" method="post">
+    <div class="container">
+        <label>Username : </label> <br>
+        <input type="text" placeholder="Enter Username" name="username" required><br><br><br><br><br><br>
+        <label>Password : </label> <br>
+        <input type="password" placeholder="Enter Password" name="password" required><br><br><br><br><br><br><br>
+        <button type="submit">Sign Up!</button><br><br><br><br><br>
+        <p>Already a user? <a href="/">Login Here</a></p>  </div>
+    </div>
+</form>
+
+{% endblock %}
