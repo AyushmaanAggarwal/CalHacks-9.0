@@ -8,12 +8,11 @@ from werkzeug.urls import url_parse
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    signin_form = SignInForm()
 
-    if signin_form.validate_on_submit():
-        username = signin_form.username.data
+    if request.method == "POST":
+        username = request.form['username']
         user_object = User.get(username)
-        if user_object and user_object.check_password(signin_form.password.data):
+        if user_object and user_object.check_password(request.form['password']):
             login_user(user_object)
             flash("Successfully logged in")
             return redirect(f'/{username}/news/{1}')
@@ -23,7 +22,7 @@ def home():
         else:
             flash('Incorrect password')
 
-    return render_template('login.html', sform=signin_form)
+    return render_template('login.html')
 
 
 @app.route('/signup', methods=['GET', 'POST'])
