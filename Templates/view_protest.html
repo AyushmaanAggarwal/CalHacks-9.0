@@ -1,0 +1,27 @@
+{% extends "header.html" %}
+{% block content %}
+
+<title>New Protest</title>
+<h3></h3>
+<form action="" method="post">
+  <table WIDTH=600>
+    <tr>
+      <td>Name: {{protest.name}}</td>
+    </tr>
+    <tr>
+      <td>Date: {{protest.date}}</td>
+    </tr>
+    <tr>
+      <td>Location: {{protest.location}}</td>
+    </tr>
+    <tr>
+      <td>Description: {{protest.description}}</td>
+    </tr>
+    <tr>
+       <td>
+           <button type="button">Donate</button>
+           <button type="button">Sign Up</button>
+        </td>
+    </tr>
+  </table>
+</form>
