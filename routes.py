@@ -1,7 +1,7 @@
 from app import app, db, login_manager
 from flask import request, render_template, flash, redirect, url_for, session
 from models import *
-from flask_login import current_user, login_user, logout_user, login_required, UserMixin
+from flask_login import current_user, login_user, logout_user, login_required
 from forms import *
 
 
