@@ -70,8 +70,8 @@ def create_new_protest(username):
         title = make_new_protest.title.data
         description = make_new_protest.description.data
         location = make_new_protest.location.data
-        date = make_new_protest.date.data
-        new_protest_object = Protest(title=title, description=description, location=location, date=date)
+        date_time = make_new_protest.date.data
+        new_protest_object = Protest(title=title, description=description, location=location, date=date_time)
         user.created_protests.append(new_protest_object)
         new_protest_object.addAttendee(username)
         db.session.add(new_protest_object)

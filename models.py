@@ -36,7 +36,7 @@ class Protest(db.Model):
     name = db.Column(db.String(150))
     description = db.Column(db.String(1000))
     location = db.Column(db.String(200))
-    date = db.Column(db.DateTime())
+    date = db.Column(db.DateTime)
     attendees = db.relationship("User", secondary=association_table, back_populates="protest_list")
     organizer_id = db.Column(db.Integer, db.ForeignKey("User.id"))
     organizer = db.relationship("User", back_populates='created_protests')
@@ -60,7 +60,7 @@ class News(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     headline = db.Column(db.String(150))
     source = db.Column(db.String(150))
-    date = db.Column(db.DateTime())
+    date = db.Column(db.DateTime)
     url = db.Column(db.String(150))
 
     @staticmethod
@@ -74,3 +74,10 @@ class News(db.Model):
 
 
 #db.create_all()
+#db.drop_all()
+
+"""news_1 = News(headline="Iran protests: Iran's Gen Z 'realise life can be lived differently'", source="BBC News", date=datetime(2022,10,14,16,00,00), url="https://www.bbc.com/news/world-middle-east-63213745")
+news_2 = News(headline="What’s Driving the Protests in Iran?", source="NYTimes", date=datetime(2022,9,24,12,00,00), url="https://www.nytimes.com/2022/09/22/world/middleeast/iran-protests.html")
+db.session.add(news_1)
+db.session.add(news_2)
+db.session.commit()"""
