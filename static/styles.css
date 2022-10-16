@@ -1,0 +1,124 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .topnav {
+    overflow: hidden;
+    background-color: #333;
+  }
+  .topnav newsstyle {
+    float: none;
+    position: absolute;
+    left: 330pt;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  .topnav newsstyle.active {
+    background-color: #108755;
+    color: white;
+  }
+  .topnav newsstyle:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  .topnav proteststyle {
+    float: none;
+    position: fixed;
+    left: 390pt;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  .topnav proteststyle.active {
+    background-color: #108755;
+    color: white;
+  }
+  .topnav proteststyle:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  .topnav b {
+    float: left;
+    padding: 0px 0px;
+  }
+  .topnav userstyle {
+    float: right;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+
+  .news name {
+    float: left;
+    font-size: 25px;
+    font-weight: 1000;
+    padding: 14px 14px;
+  }
+  .news source {
+    float: none;
+    position: absolute;
+    left: 50%;
+    font-size: 25px;
+    padding: 14px 14px;
+  }
+  .news date {
+    float: right;
+    font-size: 25px;
+    padding: 14px 14px;
+  }
+  .protest name {
+    float: left;
+    font-size: 25px;
+    font-weight: 1000;
+    padding: 14px 14px;
+  }
+  .protest location {
+    float: none;
+    position: absolute;
+    left: 50%;
+    font-size: 25px;
+    padding: 14px 14px;
+  }
+  .protest date {
+    float: right;
+    font-size: 25px;
+    padding: 14px 14px;
+  }
+  .bottom {
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  .bottom text {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  .bottom button {
+    float:right;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    background-color: #108755;
+    border: none;
+  }
+  .bottom button:hover {
+    background-color: #ddd;
+    color: black;
+  }

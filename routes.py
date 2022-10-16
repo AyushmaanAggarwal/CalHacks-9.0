@@ -28,13 +28,12 @@ def home():
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signuppage():
-    signup_form = SignUpForm()
 
-    if signup_form.validate_on_submit():
-        username = signup_form.username.data
+    if request.method == "POST":
+        username = request.form['username']
         if User.get(username) is None:
             user_object = User(username=username, password_hash=None)
-            user_object.set_password(signup_form.password.data)
+            user_object.set_password(request.form['password'])
             db.session.add(user_object)
             db.session.commit()
             flash("Successfully signed up")
@@ -42,7 +41,7 @@ def signuppage():
         else:
             flash("That username already exists. Please choose another.")
 
-    return render_template('register.html', sform=signup_form)
+    return render_template('register.html')
 
 
 @app.route('/<username>/news/<i>', methods=['GET', 'POST'])
