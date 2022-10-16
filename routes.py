@@ -3,7 +3,6 @@ from flask import request, render_template, flash, redirect, url_for, session
 from models import *
 from flask_login import current_user, login_user, logout_user, login_required, UserMixin
 from forms import *
-from werkzeug.urls import url_parse
 
 
 @app.route('/', methods=['GET', 'POST'])
