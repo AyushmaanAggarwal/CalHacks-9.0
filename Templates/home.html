@@ -1,0 +1,8 @@
+{% extends "index.html" %}
+
+<div class="news">
+  {% for news in news_list %}
+    <t>{{news.title}}</t> <a>news.source</a> <d>news.date</d>
+    <br /><br /><br /><br /><br /><hr />
+  {% endfor %}
+</div>
