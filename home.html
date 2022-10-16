@@ -12,11 +12,10 @@ body {
   overflow: hidden;
   background-color: #333;
 }
-
 .topnav a {
   float: none;
   position: absolute;
-  left: 40%;
+  left: 330pt;
   color: #f2f2f2;
   text-align: center;
   padding: 14px 16px;
@@ -27,7 +26,7 @@ body {
 .topnav d {
   float: none;
   position: fixed;
-  left: 370pt;
+  left: 390pt;
   color: #f2f2f2;
   text-align: center;
   padding: 14px 16px;
@@ -63,6 +62,26 @@ body {
   background-color: #04AA6D;
   color: white;
 }
+.news t {
+  float: left;
+  font-size: 20px;
+  font-weight: 1000;
+  padding: 14px 14px;
+}
+.news a {
+  float: none;
+  position: absolute;
+  left: 40%;
+  font-size: 25px;
+  line-height: 28px;
+  padding: 14px 14px;
+}
+.news d{
+  float: right;
+  font-size: 25px;
+  font-weight: 500;
+  padding: 14px 14px;
+}
 </style>
 </head>
 <body>
@@ -70,14 +89,16 @@ body {
 <div class="topnav">
   <b> <img src="fist.svg" height="40"></b>
   <a class="active" href="#home">News</a>
-  <d href="#news">Protests</d>
+  <d href="#protests">Protests</d>
   <c>UserName</c>
 </div>
 
-<div style="padding-left:16px">
-  <h2>Top Navigation Example</h2>
-  <p>Some content..</p>
+<div class="news">
+  <p>
+    <t>Tunisia police clash with protesters</t> <a>Reuters</a> <d>10/6/22</d> <hr />
+  </p>
 </div>
+
 
 </body>
 </html>
