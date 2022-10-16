@@ -1,3 +1,5 @@
 flask-calhacks/
 __pycache__/
+instance/
+protests.db
 .idea/
