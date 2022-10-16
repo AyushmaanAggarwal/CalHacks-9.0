@@ -30,7 +30,6 @@ class User(UserMixin, db.Model):
         return User.query.filter_by(username=i_username).first()
 
 
-
 class Protest(db.Model):
     __tablename__ = "Protest"
     id = db.Column(db.Integer, primary_key=True)
@@ -43,12 +42,12 @@ class Protest(db.Model):
     organizer = db.relationship("User", back_populates='created_protests')
 
     @staticmethod
-    def getPagination():
-        return Protest.query.order_by(Protest.date).paginate(per_page=10)
+    def getPagination(page_num):
+        return Protest.query.order_by(Protest.date).paginate(page=int(page_num), per_page=10).items
 
     @staticmethod
     def get(i_id):
-        return Protest.query.filter_by(id=i_id).first()
+        return Protest.query.filter_by(id=int(i_id)).first()
 
     def addAttendee(self, username):
         user = User.get(username)
@@ -65,13 +64,13 @@ class News(db.Model):
     url = db.Column(db.String(150))
 
     @staticmethod
-    def getPagination():
-        return Protest.query.order_by(Protest.date).paginate(per_page=10)
+    def getPagination(page_num):
+        return News.query.order_by(News.date).paginate(page=int(page_num), per_page=10).items
 
 
     @staticmethod
     def get(i_id):
-        return News.query.filter_by(id=i_id).first()
+        return News.query.filter_by(id=int(i_id)).first()
 
 
 #db.create_all()

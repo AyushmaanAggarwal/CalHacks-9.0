@@ -16,7 +16,7 @@ def home():
         if user_object and user_object.check_password(signin_form.password.data):
             login_user(user_object)
             flash("Successfully logged in")
-            return redirect(f'/{username}/news')
+            return redirect(f'/{username}/news/{1}')
         elif not user_object:
             flash(f'There is no user with this username: {username}')
             return redirect("/")
@@ -45,19 +45,19 @@ def signuppage():
     return render_template('register.html', sform=signup_form)
 
 
-@app.route('/<username>/news', methods=['GET', 'POST'])
+@app.route('/<username>/news/<i>', methods=['GET', 'POST'])
 @login_required
-def userpage_news(username):
+def userpage_news(username, i):
     user = User.get(username)
-    current_news = News.getPagination()
+    current_news = News.getPagination(i)
     return render_template('news.html', user=user, news_list=current_news)
 
 
-@app.route('/<username>/protests', methods=['GET', 'POST'])
+@app.route('/<username>/protests/<i>', methods=['GET', 'POST'])
 @login_required
-def userpage_protests(username):
+def userpage_protests(username, i):
     user = User.get(username)
-    current_protests = Protest.getPagination()
+    current_protests = Protest.getPagination(i)
     return render_template('protests.html', user=user, protests_list=current_protests)
 
 
@@ -80,7 +80,8 @@ def create_new_protest(username):
         flash("Successfully Created a Protest")
         return redirect(f'/{username}')
 
-    return render_template('new_protest.html', form=make_new_protest)
+    return render_template('new_protest.html', user=user, form=make_new_protest)
+
 
 @app.route('/<username>/update_my_protest/<id>', methods=['GET', 'POST'])
 @login_required
@@ -89,19 +90,23 @@ def update_existing_protest(username, id):
     update_protest = UpdateProtest()
 
     if update_protest.validate_on_submit():
+        curr_protest = Protest.get(id)
         title = update_protest.title.data
         description = update_protest.description.data
         location = update_protest.location.data
         date = update_protest.date.data
-        new_protest_object = Protest(title=title, description=description, location=location, date=date)
-        user.created_protests.append(new_protest_object)
-        new_protest_object.addAttendee(username)
-        db.session.add(new_protest_object)
-        db.session.commit()
-        flash("Successfully Created a Protest")
+        if title is not None:
+            curr_protest.title = title
+        if description is not None:
+            curr_protest.description = description
+        if location is not None:
+            curr_protest.location = location
+        if date is not None:
+            curr_protest.date = date
+        flash("Successfully updated a Protest")
         return redirect(f'/{username}')
 
-    return render_template('new_protest.html', form=update_protest)
+    return render_template('new_protest.html', user=user, form=update_protest)
 
 
 @app.route('/<username>/<protest>', methods=['GET', 'POST'])
@@ -117,7 +122,7 @@ def protest(username, protest):
 def signup_protest(username, protest):
     curr_protest = Protest.get(protest)
     curr_protest.addAttendee(username)
-    flash('Succesfully signed up!')
+    flash(f'Successfully signed up to {curr_protest.title}!')
     return redirect(f'/{username}/protests')
 
 
