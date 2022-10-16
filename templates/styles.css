@@ -57,38 +57,38 @@ body {
   color: white;
 }
 
-.news t {
+.news name {
   float: left;
   font-size: 25px;
   font-weight: 1000;
   padding: 14px 14px;
 }
-.news a {
+.news source {
   float: none;
   position: absolute;
   left: 50%;
   font-size: 25px;
   padding: 14px 14px;
 }
-.news d {
+.news date {
   float: right;
   font-size: 25px;
   padding: 14px 14px;
 }
-.protest t {
+.protest name {
   float: left;
   font-size: 25px;
   font-weight: 1000;
   padding: 14px 14px;
 }
-.protest l {
+.protest location {
   float: none;
   position: absolute;
   left: 50%;
   font-size: 25px;
   padding: 14px 14px;
 }
-.protest d {
+.protest date {
   float: right;
     font-size: 25px;
     padding: 14px 14px;
