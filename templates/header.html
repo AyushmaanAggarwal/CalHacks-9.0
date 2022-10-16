@@ -42,13 +42,9 @@
     color: black;
   }
 
-  .topnav imagestyle {
+  .topnav b {
     float: left;
-    color: #f2f2f2;
-    text-align: center;
     padding: 0px 0px;
-    text-decoration: none;
-    font-size: 17px;
   }
   .topnav userstyle {
     float: right;
@@ -105,9 +101,9 @@
 </head>
 <body>
 <div class="topnav">
-  <imagestyle> <img src="../static/fist.svg" height="40"></imagestyle>
-  <a href="news/1"><newsstyle class="active">News</newsstyle></a>
-  <a href="protests/1"><proteststyle>Protests</proteststyle></a>
+  <b> <img src="/static/fist.svg" height="40"></b>
+  <a href="/{{user.username}}/news/1"><newsstyle class="active">News</newsstyle></a>
+  <a href="/{{user.username}}/protests/1"><proteststyle>Protests</proteststyle></a>
   <userstyle>UserName</userstyle>
 </div>
 
