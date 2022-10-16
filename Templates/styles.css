@@ -35,7 +35,6 @@ body {
   color: black;
 }
 
-
 .topnav b {
   float: left;
   color: #f2f2f2;
@@ -69,12 +68,28 @@ body {
   position: absolute;
   left: 50%;
   font-size: 25px;
-  line-height: 28px;
   padding: 14px 14px;
 }
-.news d{
+.news d {
   float: right;
   font-size: 25px;
-  font-weight: 500;
   padding: 14px 14px;
+}
+.protest t {
+  float: left;
+  font-size: 25px;
+  font-weight: 1000;
+  padding: 14px 14px;
+}
+.protest l {
+  float: none;
+  position: absolute;
+  left: 50%;
+  font-size: 25px;
+  padding: 14px 14px;
+}
+.protest d {
+  float: right;
+    font-size: 25px;
+    padding: 14px 14px;
 }

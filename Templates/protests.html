@@ -1,0 +1,8 @@
+{% extends "index.html" %}
+
+<div class="protest">
+  {% for protest in protest_list %}
+    <t>{{protest.name}}</t> <a>protest.location</a> <d>news.date</d>
+    <br /><br /><br /><br /><br /><hr />
+  {% endfor %}
+</div>
