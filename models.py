@@ -26,8 +26,9 @@ class User(UserMixin, db.Model):
         return check_password_hash(self.password_hash, password)
 
     @staticmethod
-    def get(username):
-        return User.query.get(username)
+    def get(i_username):
+        return User.query.filter_by(username=i_username).first()
+
 
 
 class Protest(db.Model):
@@ -46,8 +47,8 @@ class Protest(db.Model):
         return Protest.query.order_by(Protest.date).paginate(per_page=10)
 
     @staticmethod
-    def get(id):
-        return Protest.query.get(int(id))
+    def get(i_id):
+        return Protest.query.filter_by(id=i_id).first()
 
     def addAttendee(self, username):
         user = User.get(username)
@@ -68,4 +69,9 @@ class News(db.Model):
         return Protest.query.order_by(Protest.date).paginate(per_page=10)
 
 
-db.create_all()
+    @staticmethod
+    def get(i_id):
+        return News.query.filter_by(id=i_id).first()
+
+
+#db.create_all()

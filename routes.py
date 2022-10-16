@@ -106,11 +106,19 @@ def update_existing_protest(username, id):
 
 @app.route('/<username>/<protest>', methods=['GET', 'POST'])
 @login_required
-def protest(username, protest_):
+def protest(username, protest):
     user = User.get(username)
-    curr_protest = Protest.get(protest_)
-
+    curr_protest = Protest.get(protest)
     return render_template('view_protest.html', user=user, protest=curr_protest)
+
+
+@app.route('/<username>/<protest>/signup', methods=['GET', 'POST'])
+@login_required
+def signup_protest(username, protest):
+    curr_protest = Protest.get(protest)
+    curr_protest.addAttendee(username)
+    flash('Succesfully signed up!')
+    return redirect(f'/{username}/protests')
 
 
 @login_manager.user_loader

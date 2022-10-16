@@ -1,26 +1,25 @@
 {% extends "header.html" %}
 {% block content %}
 
-<title>New Protest</title>
+<title>{{protest.name}}</title>
 <h3></h3>
-<form action="" method="post">
   <table WIDTH=600>
     <tr>
-      <td>Name: {{protest.name}}</td>
+      <td>Date: </td>
+        <td>{{protest.date}}</td>
     </tr>
     <tr>
-      <td>Date: {{protest.date}}</td>
+      <td>Location: </td>
+        <td>{{protest.location}}</td>
     </tr>
     <tr>
-      <td>Location: {{protest.location}}</td>
-    </tr>
-    <tr>
-      <td>Description: {{protest.description}}</td>
+      <td>Description: </td>
+        <td>{{protest.description}}</td>
     </tr>
     <tr>
        <td>
            <button type="button">Donate</button>
-           <button type="button">Sign Up</button>
+           <button type="button" onclick="/{{user.username}}/{{protest.id}}/signup">Sign Up</button>
         </td>
     </tr>
   </table>
