@@ -63,7 +63,7 @@ body {
     font-weight: 1000;
     padding: 14px 14px;
   }
-  .news source {
+  .news newssource {
     position: absolute;
     left: 50%;
     font-size: 25px;
