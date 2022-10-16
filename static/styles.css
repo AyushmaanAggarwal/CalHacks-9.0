@@ -64,7 +64,6 @@ body {
     padding: 14px 14px;
   }
   .news source {
-    float: none;
     position: absolute;
     left: 50%;
     font-size: 25px;
