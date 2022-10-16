@@ -24,3 +24,12 @@ class OrganizeProtest(FlaskForm):
     date = DateTimeField('When is your protest happening?', validators=[DataRequired()])
     submit = SubmitField('Create a new protest')
 
+
+class UpdateProtest(FlaskForm):
+    title = StringField('Re-Name your protest')
+    description = TextAreaField('Describe your protest. What and why are you protesting? Why should people care? What '
+                                'should protestors bring? ', validators=[Length(max=1000)])
+    location = StringField('Change the location: ')
+    date = DateTimeField('Change the date and time: ')
+    submit = SubmitField('Update protest')
+

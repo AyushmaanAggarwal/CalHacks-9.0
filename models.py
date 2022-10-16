@@ -64,4 +64,8 @@ class News(db.Model):
     date = db.Column(db.date())
     url = db.Column(db.String(150))
 
+    @staticmethod
+    def getPagination():
+        return Protest.query.order_by(Protest.date).paginate(per_page=10)
+
 
