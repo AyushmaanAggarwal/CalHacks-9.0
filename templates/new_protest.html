@@ -1,0 +1,30 @@
+{% extends "header.html" %}
+{% block content %}
+
+<h2>Organise a New Protest</h2>
+
+<table WIDTH=600>
+    {{ form.hidden_tag() }}
+    <tr>
+        <td>Title: </td>
+        <td>{{ form.title() }}</td>
+    </tr>
+    <tr>
+        <td>Date: </td>
+        <td>{{ form.date() }}</td>
+    </tr>
+    <tr>
+        <td>Location: </td>
+        <td>{{ form.location() }}</td>
+    </tr>
+    <tr>
+        <td>{{ form.description.label }}</td>
+        <td>{{ form.description() }}</td>
+    </tr>
+    <tr>
+        <td>Submit: </td>
+        <td>{{ form.submit() }}</td>
+    </tr>
+</table>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "header.html" %}
+{% block content %}
+
+<h2>Update the {{prot.name}} Protest</h2>
+
+<table WIDTH=600>
+  {{ form.hidden_tag() }}
+  <tr>
+    <td>Current title is {{ prot.name }}</td>
+    <td>New Title: </td>
+    <td>{{ form.title() }}</td>
+  </tr>
+  <tr>
+    <td>Current date is {{ prot.date }}</td>
+    <td>New Date: </td>
+    <td>{{ form.date() }}</td>
+  </tr>
+  <tr>
+    <td>Current location is {{ prot.location }}</td>
+    <td>New Location: </td>
+    <td>{{ form.location() }}</td>
+  </tr>
+  <tr>
+    <td>Current description is {{ prot.description }}</td>
+    <td>New Description:</td>
+    <td>{{ form.description() }}</td>
+  </tr>
+  <tr>
+    <td>Submit: </td>
+    <td>{{ form.submit() }}</td>
+  </tr>
+</table>
+
+{% endblock %}
