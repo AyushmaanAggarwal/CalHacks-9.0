@@ -1,4 +1,8 @@
 {% extends "header.html" %}
+{% block header %}
+<a href="/{{user.username}}/news/1"><newsstyle class="active">News</newsstyle></a>
+<a href="/{{user.username}}/protests/1"><proteststyle>Protests</proteststyle></a>
+{% endblock %}
 {% block content %}
 
 <div class="news">
