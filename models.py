@@ -7,7 +7,6 @@ now = datetime.now()
 
 association_table = db.Table(
     "Associate",
-    db.Base.metadata,
     db.Column("user_id", db.ForeignKey("User.id"), primary_key=True),
     db.Column("protest_id", db.ForeignKey("Protest.id"), primary_key=True))
 
@@ -32,12 +31,12 @@ class User(UserMixin, db.Model):
 
 
 class Protest(db.Model):
-    __tablename__ = "Protests"
+    __tablename__ = "Protest"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(150))
     description = db.Column(db.String(1000))
     location = db.Column(db.String(200))
-    date = db.Column(db.datetime())
+    date = db.Column(db.DateTime())
     attendees = db.relationship("User", secondary=association_table, back_populates="protest_list")
     organizer_id = db.Column(db.Integer, db.ForeignKey("User.id"))
     organizer = db.relationship("User", back_populates='created_protests')
@@ -61,7 +60,7 @@ class News(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     headline = db.Column(db.String(150))
     source = db.Column(db.String(150))
-    date = db.Column(db.date())
+    date = db.Column(db.DateTime())
     url = db.Column(db.String(150))
 
     @staticmethod
@@ -69,3 +68,4 @@ class News(db.Model):
         return Protest.query.order_by(Protest.date).paginate(per_page=10)
 
 
+db.create_all()

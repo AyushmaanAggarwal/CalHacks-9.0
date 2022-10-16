@@ -50,8 +50,7 @@ def signuppage():
 def userpage_news(username):
     user = User.get(username)
     current_news = News.getPagination()
-
-    return render_template('protests.html', user=user, news=current_news)
+    return render_template('news.html', user=user, news_list=current_news)
 
 
 @app.route('/<username>/protests', methods=['GET', 'POST'])
@@ -59,8 +58,7 @@ def userpage_news(username):
 def userpage_protests(username):
     user = User.get(username)
     current_protests = Protest.getPagination()
-
-    return render_template('protests.html', user=user, protests=current_protests)
+    return render_template('protests.html', user=user, protests_list=current_protests)
 
 
 @app.route('/<username>/create_protest', methods=['GET', 'POST'])
@@ -108,11 +106,11 @@ def update_existing_protest(username, id):
 
 @app.route('/<username>/<protest>', methods=['GET', 'POST'])
 @login_required
-def protest(username, protest):
+def protest(username, protest_):
     user = User.get(username)
-    curr_protest = Protest.get(protest)
+    curr_protest = Protest.get(protest_)
 
-    return render_template('user.html', user=user, protests=curr_protest)
+    return render_template('view_protest.html', user=user, protest=curr_protest)
 
 
 @login_manager.user_loader

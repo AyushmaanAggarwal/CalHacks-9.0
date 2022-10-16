@@ -11,17 +11,17 @@
       <table WIDTH=400>
         {{ sform.hidden_tag() }}
         <tr>
-          <td>Username:</td>
+          <td>{{ sform.username.label }}</td>
           <td>{{ sform.username() }}</td>
         </tr>
         <tr>
-          <td>Password:</td>
+          <td>{{ sform.password.label }}</td>
           <td>{{ sform.password() }}</td>
         </tr>
         
         <tr>
            <td>{{ sform.submit() }}</td>
-           <td><p>Not a Member? <a href="register.html">Register</a></p></td>
+           <td><p>Not a Member? <a href="/signup">Register</a></p></td>
         </tr>
       </table>
   </form>
