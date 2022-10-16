@@ -94,21 +94,10 @@ body {
 </div>
 
 <div class="news">
-  <t>Tunisia police clash with protesters</t> <a>Reuters</a> <d>10/6/22</d>
-  <br /><br /><br /><br /><br /><hr />
-  <t>Tunisia police clash with protesters</t> <a>Reuters</a> <d>10/6/22</d>
-  <br /><br /><br /><br /><br /><hr />
-  <t>Tunisia police clash with protesters</t> <a>Reuters</a> <d>10/6/22</d>
-  <br /><br /><br /><br /><br /><hr />
-  <t>Tunisia police clash with protesters</t> <a>Reuters</a> <d>10/6/22</d>
-  <br /><br /><br /><br /><br /><hr />
-  <t>Tunisia police clash with protesters</t> <a>Reuters</a> <d>10/6/22</d>
-  <<br /><br /><br /><br /><br /><hr />
-  <t>Tunisia police clash with protesters</t> <a>Reuters</a> <d>10/6/22</d>
-  <br /><br /><br /><br /><br /><hr />
-  <t>Tunisia police clash with protesters</t> <a>Reuters</a> <d>10/6/22</d>
-  <br /><br /><br /><br /><br /><hr />
-
+  {% for news in news_list %}
+    <t>{{news.title}}</t> <a>news.source</a> <d>news.date</d>
+    <br /><br /><br /><br /><br /><hr />
+  {% endfor %}
 </div>
 
 
