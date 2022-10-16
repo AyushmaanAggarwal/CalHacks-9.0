@@ -46,17 +46,27 @@ def signuppage():
 @app.route('/<username>/news/<i>', methods=['GET', 'POST'])
 @login_required
 def userpage_news(username, i):
+    i = int(i)
+    if i == 0:
+        return redirect(f'/{username}/news/1')
     user = User.get(username)
     current_news = News.getPagination(i)
-    return render_template('news.html', user=user, news_list=current_news, page=i)
+    if not current_news:
+        return redirect(f'/{username}/news/{i-1}')
+    return render_template('news.html', user=user, news_list=current_news, page=i, curr='news')
 
 
 @app.route('/<username>/protests/<i>', methods=['GET', 'POST'])
 @login_required
 def userpage_protests(username, i):
+    i = int(i)
+    if i == 0:
+        return redirect(f'/{username}/news/1')
     user = User.get(username)
     current_protests = Protest.getPagination(i)
-    return render_template('protests.html', user=user, protests_list=current_protests, page=i)
+    if not current_protests:
+        return redirect(f'/{username}/protests/{i-1}')
+    return render_template('protests.html', user=user, protests_list=current_protests, page=i, curr='protests')
 
 
 @app.route('/<username>/create_protest', methods=['GET', 'POST'])

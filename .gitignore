@@ -4,3 +4,5 @@ instance/
 protests.db
 .idea/
 test/
+.DS_Store
+templates/.DS_Store

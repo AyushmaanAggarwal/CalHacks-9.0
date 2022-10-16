@@ -43,7 +43,7 @@ class Protest(db.Model):
 
     @staticmethod
     def getPagination(page_num):
-        return Protest.query.order_by(Protest.date).paginate(page=int(page_num), per_page=10).items
+        return Protest.query.order_by(Protest.date).paginate(page=int(page_num), per_page=10, error_out=False).items
 
     @staticmethod
     def get(i_id):
@@ -65,7 +65,7 @@ class News(db.Model):
 
     @staticmethod
     def getPagination(page_num):
-        return News.query.order_by(News.date).paginate(page=int(page_num), per_page=10).items
+        return News.query.order_by(News.date).paginate(page=int(page_num), per_page=10, error_out=False).items
 
 
     @staticmethod
