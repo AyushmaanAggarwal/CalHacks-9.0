@@ -141,8 +141,8 @@
 {% block content %}{% endblock %}
 <div class="bottom">
   <text>Author: Joe, Ayushmaan, Jin</text>
-  <button type="button" onclick="">→</button>
-  <button type="button" onclick="">←</button>
+  <button type="button" onclick="location.href = '/{{user.username}}/{{curr}}/{{page + 1}}';">→</button>
+  <button type="button" onclick="location.href = '/{{user.username}}/{{curr}}/{{page - 1}}';">←</button>
 </div>
 </body>
 
