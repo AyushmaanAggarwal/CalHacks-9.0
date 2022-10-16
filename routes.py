@@ -51,7 +51,7 @@ def userpage_news(username, i):
         return redirect(f'/{username}/news/1')
     user = User.get(username)
     current_news = News.getPagination(i)
-    if not current_news:
+    if not current_news and i > 1:
         return redirect(f'/{username}/news/{i-1}')
     return render_template('news.html', user=user, news_list=current_news, page=i, curr='news')
 
@@ -61,12 +61,12 @@ def userpage_news(username, i):
 def userpage_protests(username, i):
     i = int(i)
     if i == 0:
-        return redirect(f'/{username}/news/1')
+        return redirect(f'/{username}/protests/1')
     user = User.get(username)
     current_protests = Protest.getPagination(i)
-    if not current_protests:
+    if not current_protests and i > 1:
         return redirect(f'/{username}/protests/{i-1}')
-    return render_template('protests.html', user=user, protests_list=current_protests, page=i, curr='protests')
+    return render_template('protests.html', user=user, protest_list=current_protests, page=i, curr='protests')
 
 
 @app.route('/<username>/create_protest', methods=['GET', 'POST'])
@@ -80,15 +80,15 @@ def create_new_protest(username):
         description = make_new_protest.description.data
         location = make_new_protest.location.data
         date_time = make_new_protest.date.data
-        new_protest_object = Protest(title=title, description=description, location=location, date=date_time)
+        new_protest_object = Protest(name=title, description=description, location=location, date=date_time)
         user.created_protests.append(new_protest_object)
         new_protest_object.addAttendee(username)
         db.session.add(new_protest_object)
         db.session.commit()
         flash("Successfully Created a Protest")
-        return redirect(f'/{username}')
+        return redirect(f'/{username}/protests/1')
 
-    return render_template('new_protest.html', user=user, form=make_new_protest)
+    return render_template('new_protest.html', user=user, form=make_new_protest, page=1)
 
 
 @app.route('/<username>/update_my_protest/<id>', methods=['GET', 'POST'])
@@ -105,7 +105,7 @@ def update_existing_protest(username, id):
         location = update_protest.location.data
         date = update_protest.date.data
         if title is not None:
-            curr_protest.title = title
+            curr_protest.name = title
         if description is not None:
             curr_protest.description = description
         if location is not None:
@@ -113,9 +113,9 @@ def update_existing_protest(username, id):
         if date is not None:
             curr_protest.date = date
         flash("Successfully updated the Protest")
-        return redirect(f'/{username}')
+        return redirect(f'/{username}/protests/1')
 
-    return render_template('update_protest.html', user=user, form=update_protest, prot=curr_protest)
+    return render_template('update_protest.html', user=user, form=update_protest, prot=curr_protest, page=1)
 
 
 @app.route('/<username>/<protest>', methods=['GET', 'POST'])

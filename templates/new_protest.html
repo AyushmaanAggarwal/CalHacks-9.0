@@ -3,6 +3,7 @@
 
 <h2>Organise a New Protest</h2>
 
+<form method="post">
 <table WIDTH=600>
     {{ form.hidden_tag() }}
     <tr>
@@ -26,5 +27,6 @@
         <td>{{ form.submit() }}</td>
     </tr>
 </table>
+</form>
 
 {% endblock %}

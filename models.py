@@ -36,14 +36,14 @@ class Protest(db.Model):
     name = db.Column(db.String(150))
     description = db.Column(db.String(1000))
     location = db.Column(db.String(200))
-    date = db.Column(db.DateTime)
+    date = db.Column(db.String(20))
     attendees = db.relationship("User", secondary=association_table, back_populates="protest_list")
     organizer_id = db.Column(db.Integer, db.ForeignKey("User.id"))
     organizer = db.relationship("User", back_populates='created_protests')
 
     @staticmethod
     def getPagination(page_num):
-        return Protest.query.order_by(Protest.date).paginate(page=int(page_num), per_page=10, error_out=False).items
+        return Protest.query.order_by(Protest.id).paginate(page=int(page_num), per_page=10, error_out=False).items
 
     @staticmethod
     def get(i_id):
@@ -60,7 +60,7 @@ class News(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     headline = db.Column(db.String(150))
     source = db.Column(db.String(150))
-    date = db.Column(db.DateTime)
+    date = db.Column(db.String(20))
     url = db.Column(db.String(150))
 
     @staticmethod

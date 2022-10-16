@@ -20,7 +20,7 @@ class OrganizeProtest(FlaskForm):
     description = TextAreaField('Describe your protest. What and why are you protesting? Why should people care? What '
                                 'should protestors bring? ', validators=[DataRequired(), Length(max=1000)])
     location = StringField('Where is your protest happening? Be specific.', validators=[DataRequired()])
-    date = DateTimeField('When is your protest happening?', validators=[DataRequired()], format='%Y-%m-%d %H:%M', display_format='%Y-%m-%d %H:%M')
+    date = StringField('When is your protest happening?', validators=[DataRequired()])
     submit = SubmitField('Create a new protest')
 
 
@@ -29,6 +29,6 @@ class UpdateProtest(FlaskForm):
     description = TextAreaField('Describe your protest. What and why are you protesting? Why should people care? What '
                                 'should protestors bring? ', validators=[Length(max=1000)])
     location = StringField('Change the location: ')
-    date = DateTimeField('Change the date: ', format='%Y-%m-%d %H:%M', display_format='%Y-%m-%d %H:%M')
+    date = StringField('Change the date: ')
     submit = SubmitField('Update protest')
 
