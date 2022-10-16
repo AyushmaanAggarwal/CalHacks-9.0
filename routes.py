@@ -50,7 +50,7 @@ def signuppage():
 def userpage_news(username, i):
     user = User.get(username)
     current_news = News.getPagination(i)
-    return render_template('news.html', user=user, news_list=current_news)
+    return render_template('news.html', user=user, news_list=current_news, page=i)
 
 
 @app.route('/<username>/protests/<i>', methods=['GET', 'POST'])
@@ -58,7 +58,7 @@ def userpage_news(username, i):
 def userpage_protests(username, i):
     user = User.get(username)
     current_protests = Protest.getPagination(i)
-    return render_template('protests.html', user=user, protests_list=current_protests)
+    return render_template('protests.html', user=user, protests_list=current_protests, page=i)
 
 
 @app.route('/<username>/create_protest', methods=['GET', 'POST'])
@@ -88,6 +88,7 @@ def create_new_protest(username):
 def update_existing_protest(username, id):
     user = User.get(username)
     update_protest = UpdateProtest()
+    curr_protest = Protest.get(id)
 
     if update_protest.validate_on_submit():
         curr_protest = Protest.get(id)
@@ -103,10 +104,10 @@ def update_existing_protest(username, id):
             curr_protest.location = location
         if date is not None:
             curr_protest.date = date
-        flash("Successfully updated a Protest")
+        flash("Successfully updated the Protest")
         return redirect(f'/{username}')
 
-    return render_template('new_protest.html', user=user, form=update_protest)
+    return render_template('update_protest.html', user=user, form=update_protest, prot=curr_protest)
 
 
 @app.route('/<username>/<protest>', methods=['GET', 'POST'])
@@ -123,7 +124,7 @@ def signup_protest(username, protest):
     curr_protest = Protest.get(protest)
     curr_protest.addAttendee(username)
     flash(f'Successfully signed up to {curr_protest.title}!')
-    return redirect(f'/{username}/protests')
+    return redirect(f'/{username}/protests/{1}')
 
 
 @login_manager.user_loader
