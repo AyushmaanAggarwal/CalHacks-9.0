@@ -17,6 +17,14 @@ body {
     text-decoration: none;
     font-size: 17px;
   }
+  .topnav logout {
+      float: right;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
   .topnav newsstyle.active {
     background-color: #108755;
     color: white;
@@ -59,20 +67,20 @@ body {
 
   .news name {
     float: left;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 1000;
     padding: 14px 14px;
   }
   .news newssource {
     float: none;
     position: fixed;
-    left: 340px;
-    font-size: 25px;
+    left: 600px;
+    font-size: 20px;
     padding: 14px 14px;
   }
   .news date {
     float: right;
-    font-size: 25px;
+    font-size: 20px;
     padding: 14px 14px;
   }
   .protest name {

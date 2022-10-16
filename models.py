@@ -76,8 +76,14 @@ class News(db.Model):
 #db.create_all()
 #db.drop_all()
 
-"""news_1 = News(headline="Iran protests: Iran's Gen Z 'realise life can be lived differently'", source="BBC News", date=datetime(2022,10,14,16,00,00), url="https://www.bbc.com/news/world-middle-east-63213745")
+'''news_1 = News(headline="Iran protests: Iran's Gen Z 'realise life can be lived differently'", source="BBC News", date=datetime(2022,10,14,16,00,00), url="https://www.bbc.com/news/world-middle-east-63213745")
 news_2 = News(headline="What’s Driving the Protests in Iran?", source="NYTimes", date=datetime(2022,9,24,12,00,00), url="https://www.nytimes.com/2022/09/22/world/middleeast/iran-protests.html")
 db.session.add(news_1)
 db.session.add(news_2)
-db.session.commit()"""
+db.session.commit()'''
+
+#news = News.get(3)
+#news1 = News.get(4)
+#news.title="New Berkeley Protest for People's Park"
+#news1.title="Protests in Myanmar from last year"
+#db.session.commit()
