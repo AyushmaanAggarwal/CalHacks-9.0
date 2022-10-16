@@ -65,8 +65,8 @@ body {
   }
   .news newssource {
     float: none;
-    position: absolute;
-    left: 50%;
+    position: fixed;
+    left: 340px;
     font-size: 25px;
     padding: 14px 14px;
   }
