@@ -23,7 +23,14 @@
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
-
+  }
+  .topnav newsstyle.active {
+    background-color: #108755;
+    color: white;
+  }
+  .topnav newsstyle:hover {
+    background-color: #ddd;
+    color: black;
   }
   .topnav proteststyle {
     float: none;
@@ -34,10 +41,12 @@
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
-
   }
-
-  .topnav newsstyle:hover {
+  .topnav proteststyle.active {
+    background-color: #108755;
+    color: white;
+  }
+  .topnav proteststyle:hover {
     background-color: #ddd;
     color: black;
   }
@@ -54,12 +63,6 @@
     text-decoration: none;
     font-size: 17px;
   }
-
-  .topnav newsstyle.active {
-    background-color: #04AA6D;
-    color: white;
-  }
-
 
   .news name {
     float: left;
@@ -94,19 +97,53 @@
   }
   .protest date {
     float: right;
-      font-size: 25px;
-      padding: 14px 14px;
+    font-size: 25px;
+    padding: 14px 14px;
+  }
+  .bottom {
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  .bottom text {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  .bottom button {
+    float:right;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    background-color: #108755;
+    border: none;
+  }
+  .bottom button:hover {
+    background-color: #ddd;
+    color: black;
   }
 </style>
 </head>
 <body>
 <div class="topnav">
   <b> <img src="/static/fist.svg" height="40"></b>
-  <a href="/{{user.username}}/news/1"><newsstyle class="active">News</newsstyle></a>
-  <a href="/{{user.username}}/protests/1"><proteststyle>Protests</proteststyle></a>
-  <userstyle>UserName</userstyle>
+  {% block header %}{% endblock %}
+  <userstyle>{{user.username}}</userstyle>
 </div>
 
 {% block content %}{% endblock %}
+<div class="bottom">
+  <text>Author: Joe, Ayushmaan, Jin</text>
+  <button type="button" onclick="">→</button>
+  <button type="button" onclick="">←</button>
+</div>
 </body>
+
 </html>
